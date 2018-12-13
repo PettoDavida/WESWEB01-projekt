@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    text-align: center;
+    width: 900px;
+    margin: auto;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.box_container{
+    display: flex;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+
+
+.pot{
+    width: 260px;
+    justify-content: space-between;
+}
