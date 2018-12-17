@@ -17,7 +17,7 @@
     ?>
     <?php 
     
-        require("Background.php");
+        require("Changer.php");
 
     ?>
 </body>

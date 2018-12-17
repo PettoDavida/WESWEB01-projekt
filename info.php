@@ -12,7 +12,7 @@ require("menu.php");
 <body>
     <?php 
     
-    require("Background.php");
+    require("Changer.php");
 
     ?>
 </body>
