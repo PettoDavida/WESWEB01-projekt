@@ -9,24 +9,32 @@ img{
 }
 
 #nav{
+    display: flex;
     transform: translateY(-10px);
     height: 60px;
     width: 100%;
     background-color: lightslategray;
+    justify-content: center;
+    
+    
 
 
 }
-#home{
+.navbar{
+    
+}
 
+#home{
+    
 }
 #weapons{
-
+    
 }
 #legends{
-
+    
 }
 #map{
-
+    
 }
 #profile{
     
