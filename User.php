@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $dbc = mysqli_connect("localhost","root","","users");
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
