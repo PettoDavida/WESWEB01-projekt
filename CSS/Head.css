@@ -3,31 +3,46 @@
     margin: 0;
 }
 
-img{
+#head{
     transform: translateY(-4px);
     width: 100%;
 }
 
 #nav{
+    display: flex;
     transform: translateY(-10px);
-    height: 60px;
+    height: 50px;
     width: 100%;
     background-color: lightslategray;
-
-
+    align-content: flex-start;
+    justify-content: space-around;
+    font-size: 30px;
+    position: sticky;
 }
-#home{
 
+a{
+    text-decoration: none;
+    color: black;
 }
-#weapons{
 
+a:hover{
+    color: white;
 }
-#legends{
 
+#home, #weapons, #legends, #chat, #profile{
+    cursor: pointer;
+    margin-top: 5px;
 }
-#map{
 
-}
-#profile{
+#signin{
+    margin: 10px 30px 10px 100px;
+    font-size: 20px;
     
 }
+
+#signin:hover{
+    color: white;
+    cursor: pointer; 
+    
+}
+

@@ -43,51 +43,24 @@ email varchar(32),
 password varchar(32)
 );
 
-CREATE TABLE Post(
-id int(8) PRIMARY KEY AUTO_INCREMENT,
-user_id int(8),
-title varchar(128),
-content varchar(8000),
-timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY(user_id) REFERENCES  User(id)
+CREATE TABLE Chat(
+    id int(8) PRIMARY KEY AUTO_INCREMENT
 );
 
-CREATE TABLE Comment(
-id int(8) PRIMARY KEY AUTO_INCREMENT,
-post_id int(8),
-user_id int(8),
-content varchar(8000),
-timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-FOREIGN KEY(post_id) REFERENCES  Post(id),
-FOREIGN KEY(user_id) REFERENCES  User(id)
+CREATE TABLE Chats(
+    User_ID int(8),
+    Chat_ID int(8),
+    FOREIGN KEY(User_ID) REFERENCES User(id),
+    FOREIGN KEY(Chat_ID) REFERENCES Chat(id)
 );
 
-CREATE TABLE UpvotePost(
-user_id int(8),
-post_id int(8),
-FOREIGN KEY(user_id) REFERENCES  User(id),
-FOREIGN KEY(post_id) REFERENCES  Post(id)
-);
-
-CREATE TABLE DownvotePost(
-user_id int(8),
-post_id int(8),
-FOREIGN KEY(user_id) REFERENCES  User(id),
-FOREIGN KEY(post_id) REFERENCES  Post(id)
-);
-
-CREATE TABLE UpvoteComment(
-user_id int(8),
-comment_id int(8),
-FOREIGN KEY(user_id) REFERENCES  User(id),
-FOREIGN KEY(comment_id) REFERENCES  Comment(id)
-);
-
-CREATE TABLE DownvoteComment(
-user_id int(8),
-comment_id int(8),
-FOREIGN KEY(user_id) REFERENCES  User(id),
-FOREIGN KEY(comment_id) REFERENCES  Comment(id)
+CREATE TABLE Messages(
+    User_ID int(8),
+    Chat_ID int(8),
+    FOREIGN KEY(User_ID) REFERENCES User(id),
+    FOREIGN KEY(Chat_ID) REFERENCES Chat(id),
+    Message varchar(128),
+    Sent timestamp
 );
 
 CREATE TABLE AP(

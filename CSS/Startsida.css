@@ -1,5 +1,33 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    
+
 }
+
+#Flex{
+    display: flex;
+    justify-content: center;
+}
+
+#patchheader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#patch {
+    text-align: start;
+    padding: 10px;
+
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /*  Detta är för att göra så att footer och header sitter i början och slutet av sidan */
+}
+
+main{
+    flex: 1;
+}
+

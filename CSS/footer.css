@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#customer{
+    padding: 10px;
+}
+
+#facebook,
+#youtube,
+#twitter {
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+}
+
+#facebook {
+    background-color: #3c5a99;
+
+}
+
+#youtube {
+    background-color: red;
+
+}
+
+#twitter {
+    background-color: rgb(85, 172, 238);
+
+}
+
+#face,
+#yt,
+#tweet {
+    width: 50px;
+    height: 50px;
+
+}
+
+#footer {
+    display: flex;
+    background-color: lightslategray;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#socials {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+}
