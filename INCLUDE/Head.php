@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./CSS/Head.css">
-<img id="head" src="./IMAGES/ALBanner.png" alt="Banner">
+<img id="head" src="IMAGES/Banner.png" alt="Banner">
 
 
 
