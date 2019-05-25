@@ -2,7 +2,6 @@ DROP DATABASE Apex;
 CREATE DATABASE Apex;
 USE Apex;
 
-
 CREATE TABLE Lore(
 id int(8) PRIMARY KEY, 
 title varchar(32), 
@@ -12,19 +11,19 @@ content varchar(8000)
 CREATE TABLE Passive(
 id int(8) PRIMARY KEY, 
 name varchar(32), 
-description varchar(32)
+description varchar(128)
 );
 
 CREATE TABLE Tactical(
 id int(8) PRIMARY KEY, 
 name varchar(32), 
-description varchar(32)
+description varchar(128)
 );
 
 CREATE TABLE Ultimate(
 id int(8) PRIMARY KEY, 
 name varchar(32), 
-description varchar(32)
+description varchar(128)
 );
 
 CREATE TABLE Weapon(
@@ -40,47 +39,29 @@ CREATE TABLE User(
 id int(8) PRIMARY KEY AUTO_INCREMENT,
 username varchar(32),
 email varchar(32),
-password varchar(32)
+password varchar(60)
 );
 
-CREATE TABLE Chat(
-    id int(8) PRIMARY KEY AUTO_INCREMENT
-);
-
-CREATE TABLE Chats(
-    User_ID int(8),
-    Chat_ID int(8),
-    FOREIGN KEY(User_ID) REFERENCES User(id),
-    FOREIGN KEY(Chat_ID) REFERENCES Chat(id)
-);
-
-CREATE TABLE Messages(
-    User_ID int(8),
-    Chat_ID int(8),
-    FOREIGN KEY(User_ID) REFERENCES User(id),
-    FOREIGN KEY(Chat_ID) REFERENCES Chat(id),
-    Message varchar(128),
-    Sent timestamp
-);
-
-CREATE TABLE AP(
-id int(8) PRIMARY KEY,
-passive int(8),
-tactical int(8),
-ultimate int(8),
-FOREIGN KEY(passive) REFERENCES  Passive(id),
-FOREIGN KEY(tactical) REFERENCES  Tactical(id),  
-FOREIGN KEY(ultimate) REFERENCES  Ultimate(id)
+CREATE TABLE worldchat(
+id int(8) PRIMARY KEY AUTO_INCREMENT,
+userid int(8),
+message varchar(128),
+sent timestamp default CURRENT_TIMESTAMP,
+FOREIGN KEY(userid) REFERENCES user(id)
 );
 
 CREATE TABLE Legend(
 id int(8) PRIMARY KEY, 
-name varchar(8), 
+name varchar(32), 
 role varchar(32), 
-abilities int(8), 
+passive int(8),
+tactical int(8),
+ultimate int(8),
 lore int(8),
-FOREIGN KEY(abilities) REFERENCES AP(id),
-FOREIGN KEY(lore) REFERENCES  Lore(id)
+FOREIGN KEY(lore) REFERENCES  Lore(id),
+FOREIGN KEY(passive) REFERENCES  Passive(id),
+FOREIGN KEY(tactical) REFERENCES  Tactical(id),  
+FOREIGN KEY(ultimate) REFERENCES  Ultimate(id)
 );
 
 CREATE TABLE Favoritelegend(
@@ -155,43 +136,35 @@ INSERT INTO Ultimate(id, name, description) VALUES (7, "Launch Pad", "Deploy a j
 INSERT INTO Ultimate(id, name, description) VALUES (8, "Zipline Gun", "Create a zipline for everyone to use."); 
 INSERT INTO Ultimate(id, name, description) VALUES (9, "Dimensional Rift", "Link two locations with portals for 60 seconds, allowing your entire team to use them.");
 
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (1, 1, 1, 1);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (2, 2, 2, 2);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (3, 3, 3, 3);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (4, 4, 4, 4);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (5, 5, 5, 5);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (6, 6, 6, 6);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (7, 7, 7, 7);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (8, 8, 8, 8);
-INSERT INTO AP(id, passive, tactical, ultimate) VALUES (9, 9, 9, 9);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (1, "Bangalore", "Aggressor", 1, 1, 1, 1);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (2, "BloodHound", "Support", 2, 2, 2, 2);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (3, "Caustic", "Protector", 3, 3, 3, 3);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (4, "Gibraltar", "Protector", 4, 4, 4, 4);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (5, "Lifeline", "Support", 5, 5, 5, 5);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (6, "Mirage", "Aggressor", 6, 6, 6, 6);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (7, "Octane", "Aggressor", 7, 7, 7, 7);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (8, "Pathfinder", "Support", 8, 8, 8, 8);
+INSERT INTO Legend(id, name, role, passive, tactical, ultimate, lore) VALUES (9, "Wraith", "Aggressor", 9, 9, 9, 9);
 
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (1, "Bangalore", "Aggressor", 1, 1);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (2, "BloodHound", "Support", 2, 2);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (3, "Caustic", "Protector", 3, 3);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (4, "Gibraltar", "Protector", 4, 4);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (5, "LifeLine", "Support", 5, 5);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (6, "Mirage", "Aggressor", 6, 6);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (7, "Octane", "Aggressor", 7, 7);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (8, "PathFinder", "Support", 8, 8);
-INSERT INTO Legend(id, name, role, abilities, lore) VALUES (9, "Wraith", "Aggressor", 9, 9);
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("R-99", "SubMachineGun", "Light", 12, 1080);
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Prowler", "SubMachineGun", "Heavy", 14, 797);
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Alternator", "SubMachineGun", "Light", 13, 641);
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("R-301", "AssaultRifle", "Light", 14, 797);
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Flatline" ,"AssaultRifle" ,"Heavy" ,16 , 600 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Hemlok" ,"AssaultRifle" ,"Heavy" ,18 , 480 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Havoc" ,"AssaultRifle" ,"Energy" ,18 , 437 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("G7 Scout" ,"Sniper" ,"Light" ,30 ,240 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Triple Take" ,"Sniper" ,"Energy" ,69 ,60 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Longbow" ,"Sniper" ,"Heavy" ,55 ,60 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Kraber" ,"Sniper" ,"Special" ,125 ,60 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Spitfire" ,"LightMachineGun" ,"Heavy" ,20 ,540 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Devotion" ,"LightMachineGun" ,"Energy" ,17 ,900 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Mastiff" ,"ShotGun" ,"Special" ,144 ,60 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Mozambique" ,"ShotGun" ,"Shells" ,45 ,180 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("EVA-8 AUTO" ,"ShotGun" ,"Shells" ,63 ,120 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Peacekeeper" ,"ShotGun" ,"Shells" ,110 ,60 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("P2020" ,"HandGun" ,"Light" ,12 ,420 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Wingman" ,"HandGun" ,"Heavy" ,45 ,180 );
+INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("RE-45" ,"HandGun" ,"Light" ,11 ,720 );
 
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("R-99", "SMG", "Light", 12, 1080);
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Prowler", "SMG", "Heavy", 14, 797);
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Alternator", "SMG", "Light", 13, 641);
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("R-301", "AR", "Light", 14, 797);
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Flatline" ,"AR" ,"Heavy" ,16 , 600 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Hemlok" ,"AR" ,"Heavy" ,18 , 480 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Havoc" ,"AR" ,"Energy" ,18 , 437 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("G7-Scout" ,"SR" ,"Light" ,30 ,240 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Triple Take" ,"SR" ,"Energy" ,69 ,60 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Longbow" ,"SR" ,"Heavy" ,55 ,60 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Kraber" ,"SR" ,"Special" ,125 ,60 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Spitfire" ,"LMG" ,"Heavy" ,20 ,540 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Devotion" ,"LMG" ,"Energy" ,17 ,900 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Mastiff" ,"SG" ,"Special" ,144 ,60 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Mozambique" ,"SG" ,"Shells" ,45 ,180 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("EVA-8 AUTO" ,"SG" ,"Shells" ,63 ,120 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Peacekeeper" ,"SG" ,"Shells" ,110 ,60 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("P2020" ,"HG" ,"Light" ,12 ,420 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("Wingman" ,"HG" ,"Heavy" ,45 ,180 );
-INSERT INTO Weapon(name, type, bullets, damage, firerate) VALUES ("RE-45" ,"HG" ,"Light" ,11 ,720 );
+INSERT INTO user(username, email, password) VALUES ('123', '123@123.123', '$2y$10$15kqzCDQwGbD2pHQWBsgbejXQoqaYqMA9It3dxjgex2OCp9Hudc7q');

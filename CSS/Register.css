@@ -1,5 +1,12 @@
-*{
-    margin: 0;
-    padding: 0;
-    
+/*Sätter allt i mitten*/
+.rcontainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#un, #em, #pw{
+text-align: center;
+margin: 10px;
 }

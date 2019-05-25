@@ -1,8 +1,6 @@
-*{
-    margin: 0;
-    padding: 0;
-    
-}
+/*Allt detta fixar så att allt är i mitten av sidan
+men även så att texten där man klickar om man vill 
+skapa ett konto är blått medans det andra är svart*/
 
 #lcontainer{
     display: flex;
@@ -11,20 +9,20 @@
     align-items: center;
 }
 
-#container{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /*  Detta är för att göra så att footer och header sitter i början och slutet av sidan */
-}
-
-main{
-    flex: 1;
-}
-
 #un{
-
+text-align: center;
+margin: 10px;
 }
 
 #pw{
+text-align: center;
+margin: 10px;
+}
 
+#reg{
+    font-size: 15px;
+}
+
+#reg a{
+    color: blue;
 }

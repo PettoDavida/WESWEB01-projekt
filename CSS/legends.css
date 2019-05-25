@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: center;
+    text-align: center;
+    /*allting ligger i mitten och när den kommer till slutet av skärmen så läggs det under de andra istället för att fortsätta åt höger*/
+}
+
+#searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+        /*Sätter search baren i mitten av skärmen */
+
+}
+
+.box_container img{
+    
+    height: 500px;
+    
+    /*sätter höjden till 500 pixlar på bilderna*/
+}
+
+#body{
+    margin: 0px 0px 20px 0px
+}
+@media only screen and (max-width: 420px){
+
+.box_container>* { /*Fix för mobilvyn*/
+    width: 100%;
+}
+}

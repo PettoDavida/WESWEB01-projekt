@@ -1,0 +1,19 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+        /*Gör så att allt visas i mitten av skärmen*/
+}
+
+.box_container img{
+    /*sätter höjden på bilden till 200 pixlar*/
+    height: 200px;
+    
+}
+
+@media only screen and (max-width: 420px){
+    .box_container img{
+        height:150px;
+    }
+}

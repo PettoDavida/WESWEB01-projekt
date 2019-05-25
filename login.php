@@ -7,45 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
-
+    <link rel="stylesheet" href="./CSS/footer.css">
     <link rel="stylesheet" href="./CSS/Head.css">
-    <link rel="stylesheet" href="./CSS/logsql.css">
+    <link rel="stylesheet" href="./CSS/fix.css">
+    <link rel="stylesheet" href="./CSS/form.css">
 </head>
 
 <body>
     <div id="container">
         <?php
         include("INCLUDE/Head.php");
-    ?>
-
-        <?php 
+    
 
 
     if(isset($_POST['usname']) && isset($_POST['Pass'])){
 
-        $connect = mysqli_connect("localhost","root","","apex");
-
+        include("INCLUDE/db.php");
+        
         $usname = $_POST['usname'];
         $Pass = $_POST['Pass'];
 
 
 
-        $query = "SELECT * FROM user WHERE username='$usname' AND password = '$Pass'";
+        $query = "SELECT * FROM user WHERE username='$usname'";
 
         $result = mysqli_query($connect, $query);
 
         $error = false;
         if(mysqli_num_rows($result) == 1){
-            $row = mysqli_fetch_array($result);
-
-            $_SESSION['valid_login'] = true;
-            $_SESSION['user_id'] = $row['UserId'];
-            $_SESSION['user'] = $row;
+            $row = mysqli_fetch_assoc($result);
+            if(password_verify($Pass, $row['password'])){
             
+                $_SESSION['valid_login'] = true;
+                $_SESSION['user_id'] = $row['UserId'];
+                $_SESSION['user'] = $row;
+                setcookie(login, true, time()+60*60*60*60);
+                header("location: index.php");
+            }
 
         }else{
             $error = true;
             echo("Invalid!");
+            header("refresh: 2");
         }
     }
     ?>
@@ -53,14 +56,15 @@
             <form method="post">
                 <div id="lcontainer">
                     <div id="un">
-                        <label for="usname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="usname" required>
+                        <input type="text" name="usname" class="question" required autocomplete="off" />
+                        <label for="usname"><span>Username:</span></label>
                     </div>
                     <div id="pw">
-                        <label for="Pass"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="Pass" required>
+                        <input type="password" name="Pass" class="question" required autocomplete="off" />
+                        <label for="Pass"><span>Password:</span></label>
                     </div>
                     <input type="submit" value="Log In">
+                    <div id="reg">Don't have an account? <br> <a href="Register.php">Create account</a></div>
                 </div>
             </form>
         </main>

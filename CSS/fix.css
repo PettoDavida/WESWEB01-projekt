@@ -1,0 +1,12 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+main{
+    flex: 1;
+}
+
+/*Allt detta gör så att header och footer alltid är på toppen respektive botten
+och gör så att main sitter i mitten av webbplatsen där all info ligger*/

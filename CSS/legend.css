@@ -1,0 +1,78 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+        /*Gör så att allt visas i mitten av skärmen*/
+}
+
+.box_container img{
+    /*sätter höjden på bilden till 500 pixlar*/
+    height: 500px;
+    
+}
+/* #region */
+#lore{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+text-align: center;
+}
+
+#lt{
+margin: 25px;
+font-size: 30px;
+}
+
+#lc{
+    width: 800px;
+    
+}
+/* #endregion */
+/*Allt i denna regionen är till för att sätta loren är i mitten*/
+
+/* #region*/
+#abilities{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100px;
+    margin-bottom: 50px;
+}
+
+#passive, #tactical, #ultimate{
+display: flex;
+flex-direction: column;
+text-align: center;
+padding: 30px;
+width: 20%;
+
+}
+/*#endregion*/
+/*Fixar så att abilties är i mitten på en rad*/
+
+@media only screen and (max-width: 420px){
+    #abilities{
+        height:auto;
+    }
+    #lc{
+        width: 75%;
+    }
+    main{
+        font-size: 15px;
+
+    }
+    #passive, #tactical, #ultimate{
+        width: 120px;
+        padding:10px;
+    }
+    .title{
+        font-size: 20px;
+    }
+    .title, #lt,#name{
+        text-decoration: underline;
+
+    } /*Gör så att allt passar i mobilvy*/
+}

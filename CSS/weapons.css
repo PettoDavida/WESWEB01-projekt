@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    /*allting ligger i mitten och när den kommer till slutet av skärmen så läggs det under de andra istället för att fortsätta åt höger*/
+}
+
+#searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /*Sätter search baren i mitten av skärmen */
+}
+
+
+.box_container img {
+    cursor: pointer;
+    height: 200px;
+    /*sätter höjden på bilden till 200 pixlar*/
+}
+
+#body {
+    /* 5 pixlar på toppen 0 på höger 20 på botten och 0 på vänster*/
+    margin: 5px 0px 20px 0px
+}
+
+@media only screen and (max-width: 420px) {
+    .box_container img {
+        max-width: 100%;
+        height: 150px;
+    }
+}
+
+/*Fixar så att det är snyggt i mobil vy*/

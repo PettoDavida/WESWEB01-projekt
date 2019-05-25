@@ -1,33 +1,102 @@
-* {
-    margin: 0;
-    padding: 0;
+/*Jag vet inte exakt hur allt funkar men det gör en ModalBox(JavaScript) som man behövde för att få ett högre betyg*/
+/* #region MODAL */
 
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0, 0.8);
+    z-index: 999999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease-in-out;
 }
+
+.modal .box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 400px;
+    height: 200px;
+    background: white;
+    margin-top: -120px;
+    margin-left: -200px;
+    transition: margin .2s ease-in-out;
+}
+
+.modal .close_btn{
+    position: absolute;
+    left: 100%;
+    bottom: 100%;
+    margin-left: -25px;
+    margin-bottom: -30px;
+    height: 24px;
+    width: 24px;
+}
+
+.modal .close_btn i{
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+}
+
+.modal .modalContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal .modalContent h2{
+    color: black;
+}
+
+.modal .close_btn i{
+    color: var(--accent-color);
+}
+
+.modal_open{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal_open .box{
+    margin-top: -100px;
+}
+
+/* #endregion MODAL */
 
 #Flex{
     display: flex;
     justify-content: center;
+    /*fixar så att allt är i mitten*/
+}
+
+audio{
+    z-index: -10;
 }
 
 #patchheader {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Detta sätter allt inom patchheader till att vara i mitten och i en column */
 }
 
 #patch {
     text-align: start;
-    padding: 10px;
+    padding: 10px; /* gör så att listan är i mitten och i början av sin div*/
 
 }
 
-#container{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /*  Detta är för att göra så att footer och header sitter i början och slutet av sidan */
-}
+#bc{
 
-main{
-    flex: 1;
 }
-
+@media only screen and (max-width: 420px){
+#patch{
+    padding: 20px;
+}
+}/*Detta är så att prickarna frin listan visas helt och hållet*/

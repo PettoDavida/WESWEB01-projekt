@@ -1,0 +1,45 @@
+#chat{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+/*Sätter chatten i mitten av sidan*/
+}
+
+#button{
+    margin: 10px;
+}
+
+#chatroom{
+    border: 2px solid black;
+    width: 20%;
+    height: 300px;
+    overflow: scroll;
+    position: relative;
+    bottom: 0;
+    /*Fixar så att chatrummet har en scroll funktion och har en border runt så att man kan se vart den är*/
+}
+
+#msg{
+    border: 2px solid black;
+    background-color: aquamarine;
+    margin: 5px 10px 5px 2px; 
+    border-radius: 10px;
+    padding-left: 5px;
+    /* Detta fixar chatten så att det man skrivit har en fin  */
+}
+
+#time{
+    font-size: 10px;
+    /* Gör så att tiden på meddelanden är mindre */
+}
+
+li{ /*Tar bort punkterna på list itemsen*/
+    display: block;
+}
+
+@media only screen and (max-width: 420px){
+#chatroom{
+    width: 50%; /*Gör så att chatten inte är så liten*/
+}
+}

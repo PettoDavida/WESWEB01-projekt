@@ -1,11 +1,8 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 
 #customer{
     padding: 10px;
-}
+}/*sätter en padding på tio runt hela*/
 
 #facebook,
 #youtube,
@@ -13,7 +10,7 @@
     width: 50px;
     height: 50px;
     margin: 20px;
-}
+} /*ändrar så att de har lika storlek och tar samma plats*/
 
 #facebook {
     background-color: #3c5a99;
@@ -29,13 +26,13 @@
     background-color: rgb(85, 172, 238);
 
 }
-
+/*ändrar background färg på respektive div*/
 #face,
 #yt,
 #tweet {
     width: 50px;
     height: 50px;
-
+/* gör så att bilderna är lika stora*/ 
 }
 
 #footer {
@@ -43,10 +40,29 @@
     background-color: lightslategray;
     flex-direction: row;
     justify-content: space-around;
+    /* sätter färgen på footern och gör så att allt innehåll är lika utplacerade*/
 }
 
 #socials {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
+}/*gör så att socials sitter i början av footern och på rad istället för i en kolumn*/
+
+@media only screen and (max-width: 420px){
+    #face,
+    #yt,
+    #tweet {
+        width: 50px;
+        height: 50px;
+    /* gör så att bilderna är lika stora*/ 
+    }
+    #facebook,
+#youtube,
+#twitter {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+} /*ändrar så att de har lika storlek och tar samma plats*/
+
 }
