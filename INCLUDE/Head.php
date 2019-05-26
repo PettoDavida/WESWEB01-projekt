@@ -9,6 +9,7 @@ session_start();
 
 
 <div id="nav">
+    <div id="home"> <a href="index.php">Home</a> </div>
     <div id="weapons"> <a href="weapons.php">Weapons</a> </div>
     <div id="legends"> <a href="legends.php">Legends</a> </div>
     <?php if(isset($_SESSION['valid_login']) && $_SESSION['valid_login'] === true){ ?> 
