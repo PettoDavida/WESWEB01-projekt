@@ -1,6 +1,6 @@
-DROP DATABASE Apex;
+
 CREATE DATABASE Apex;
-USE Apex;
+USE mavi;
 
 CREATE TABLE Lore(
 id int(8) PRIMARY KEY, 
@@ -35,7 +35,7 @@ damage int(8),
 firerate int(8)
 );
 
-CREATE TABLE User(
+CREATE TABLE user(
 id int(8) PRIMARY KEY AUTO_INCREMENT,
 username varchar(32),
 email varchar(32),
@@ -67,14 +67,14 @@ FOREIGN KEY(ultimate) REFERENCES  Ultimate(id)
 CREATE TABLE Favoritelegend(
 user_id int(8),
 legend_id int(8),
-FOREIGN KEY(user_id) REFERENCES User(id),
+FOREIGN KEY(user_id) REFERENCES user(id),
 FOREIGN KEY(legend_id) REFERENCES Legend(id)
 );
 
 CREATE TABLE Favoriteweapon(
 user_id int(8),
 weapon_id int(8),
-FOREIGN KEY(user_id) REFERENCES  User(id),
+FOREIGN KEY(user_id) REFERENCES  user(id),
 FOREIGN KEY(weapon_id) REFERENCES  Weapon(id)
 );
 

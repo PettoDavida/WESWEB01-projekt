@@ -16,7 +16,9 @@
 <body>
     <div id="container">
 
-        <?php include("INCLUDE/head.php")?>
+        <?php include("INCLUDE/head.php");
+        
+        ?>
         <main>
             <div id="searchbar">
                 <form>

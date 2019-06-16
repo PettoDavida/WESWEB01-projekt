@@ -38,7 +38,7 @@
 
                 else{
                     mysqli_query($connect,$query);
-                    header("location: Login.php");
+                    header("location: login.php");
                 }
                 
 

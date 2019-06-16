@@ -1,3 +1,10 @@
+<?php 
+ini_set('diplay_errors', 1);
+ini_set('diplay_startup_errors', 1);
+error_reporting(E_ALL);
+echo "potatis";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +24,7 @@
 <body>
     <div id="container">
 
-        <?php include("INCLUDE/head.php")?>
+        <?php include "INCLUDE/head.php";?>
         <main>
             <div id="searchbar">
                 <form>
